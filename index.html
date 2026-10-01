@@ -2,112 +2,150 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>자바스크립트 퀴즈</title>
-<link rel="stylesheet" href="style.css">
+<title>자바스크립트 기초 퀴즈</title>
+<style>
+    body { 
+        font-family: "맑은 고딕", sans-serif; background-color:#f0f0f0; 
+    }
+    #wrap { 
+        width: 800px; margin: 20px auto; background:#fff; padding:20px; border:1px solid #ccc; 
+    }
+    h1 { 
+        text-align:center; color:#333; 
+    }
+    .note { 
+        background:#e8f5e9; padding:10px; margin-bottom:20px; border-left:5px solid #4caf50; 
+    }
+    .question { 
+        margin:15px 0; }
+    button { 
+        padding:10px 15px; background:#2196f3; color:#fff; border:none; cursor:pointer; 
+    }
+    button:hover { 
+        background:#1976d2; 
+    }
+    #result { 
+        margin-top:20px; font-weight:bold; 
+    }
+</style>
 <script>
-
 function checkQuiz(){
-
     let score = 0;
+    let total = 10;
 
-    for(let i=1;i<=10;i++){
-
-        let answer =
-        document.querySelector(
-        'input[name="q'+i+'"\]:checked');
-
+    for(let i=1;i<=total;i++){
+        let answer = document.querySelector('input[name="q'+i+'"]:checked');
         if(answer){
             score += Number(answer.value);
         }
     }
 
+    let msg = "";
+    if(score === 10){
+        msg = "만점입니다. 기본 개념을 잘 이해했군요!";
+    } else if(score >= 7){
+        msg = "좋습니다. 조금만 더 복습하면 완벽해질 거예요.";
+    } else {
+        msg = "조금 더 공부가 필요합니다. 위의 설명을 다시 읽어보세요.";
+    }
+
     document.getElementById("result").innerHTML =
-    "점수 : " + score + " / 10";
+    "당신의 점수 : " + score + " / " + total + "<br>" + msg;
 }
-
 </script>
-
 </head>
-
 <body>
-
 <div id="wrap">
+    <h1>자바스크립트 기초 학습 페이지</h1>
 
-<h2>자바스크립트 퀴즈</h2>
+    <div class="note">
+        <h3>학습 노트</h3>
+        <p>
+            자바스크립트는 웹 페이지를 동적으로 만들어주는 언어입니다.<br>
+            - <b>prompt()</b> : 사용자 입력을 받음<br>
+            - <b>document.write()</b> : 화면에 출력<br>
+            - <b>parseInt()</b> : 문자열을 정수로 변환<br>
+            - <b>Math</b> 객체 : 난수 생성 등 수학 기능<br>
+            - <b>Date</b> 객체 : 날짜와 시간 처리<br>
+            - <b>getElementById()</b> : id로 요소 선택<br>
+            - <b>getElementsByClassName()</b> : class로 요소 선택<br>
+            - <b>addEventListener()</b> : 이벤트 등록<br>
+        </p>
+        <p>아래 퀴즈를 풀면서 개념을 확인해보세요!</p>
+    </div>
 
-<div class="question">
-<b>1. 사용자 입력을 받는 함수는?</b><br>
-<input type="radio" name="q1" value="1"> prompt()<br>
-<input type="radio" name="q1" value="0"> write()<br>
-<input type="radio" name="q1" value="0"> random()<br>
+    <h2>퀴즈</h2>
+
+    <div class="question">
+        <b>1. 사용자 입력을 받는 함수는?</b><br>
+        <input type="radio" name="q1" value="1"> prompt()<br>
+        <input type="radio" name="q1" value="0"> write()<br>
+        <input type="radio" name="q1" value="0"> random()<br>
+    </div>
+
+    <div class="question">
+        <b>2. 화면에 출력하는 함수는?</b><br>
+        <input type="radio" name="q2" value="1"> document.write()<br>
+        <input type="radio" name="q2" value="0"> alert()<br>
+        <input type="radio" name="q2" value="0"> prompt()<br>
+    </div>
+
+    <div class="question">
+        <b>3. 문자열을 정수로 변환하는 함수는?</b><br>
+        <input type="radio" name="q3" value="1"> parseInt()<br>
+        <input type="radio" name="q3" value="0"> random()<br>
+        <input type="radio" name="q3" value="0"> getDate()<br>
+    </div>
+
+    <div class="question">
+        <b>4. 난수를 만드는 객체는?</b><br>
+        <input type="radio" name="q4" value="1"> Math<br>
+        <input type="radio" name="q4" value="0"> Date<br>
+        <input type="radio" name="q4" value="0"> String<br>
+    </div>
+
+    <div class="question">
+        <b>5. 날짜와 시간을 저장하는 객체는?</b><br>
+        <input type="radio" name="q5" value="1"> Date<br>
+        <input type="radio" name="q5" value="0"> Time<br>
+        <input type="radio" name="q5" value="0"> Clock<br>
+    </div>
+
+    <div class="question">
+        <b>6. id로 요소를 선택하는 메서드는?</b><br>
+        <input type="radio" name="q6" value="1"> getElementById()<br>
+        <input type="radio" name="q6" value="0"> getElementsByClassName()<br>
+        <input type="radio" name="q6" value="0"> getElementsByTagName()<br>
+    </div>
+
+    <div class="question">
+        <b>7. 클래스로 요소를 선택하는 메서드는?</b><br>
+        <input type="radio" name="q7" value="1"> getElementsByClassName()<br>
+        <input type="radio" name="q7" value="0"> getElementById()<br>
+        <input type="radio" name="q7" value="0"> getTagName()<br>
+    </div>
+
+    <div class="question">
+        <b>8. 이벤트를 등록하는 메서드는?</b><br>
+        <input type="radio" name="q8" value="1"> addEventListener()<br>
+        <input type="radio" name="q8" value="0"> addClick()<br>
+        <input type="radio" name="q8" value="0"> addButton()<br>
+    </div>
+
+    <div class="question">
+        <b>9. OX : Math.random()은 난수를 생성한다.</b><br>
+        <input type="radio" name="q9" value="1"> O<br>
+        <input type="radio" name="q9" value="0"> X<br>
+    </div>
+
+    <div class="question">
+        <b>10. OX : Date 객체는 현재 시간을 가져올 수 없다.</b><br>
+        <input type="radio" name="q10" value="0"> O<br>
+        <input type="radio" name="q10" value="1"> X<br>
+    </div>
+
+    <button onclick="checkQuiz()">채점하기</button>
+    <div id="result"></div>
 </div>
-
-<div class="question">
-<b>2. 화면에 출력하는 함수는?</b><br>
-<input type="radio" name="q2" value="1"> document.write()<br>
-<input type="radio" name="q2" value="0"> alert()<br>
-<input type="radio" name="q2" value="0"> prompt()<br>
-</div>
-
-<div class="question">
-<b>3. 문자열을 정수로 변환하는 함수는?</b><br>
-<input type="radio" name="q3" value="1"> parseInt()<br>
-<input type="radio" name="q3" value="0"> random()<br>
-<input type="radio" name="q3" value="0"> getDate()<br>
-</div>
-
-<div class="question">
-<b>4. 난수를 만드는 객체는?</b><br>
-<input type="radio" name="q4" value="1"> Math<br>
-<input type="radio" name="q4" value="0"> Date<br>
-<input type="radio" name="q4" value="0"> String<br>
-</div>
-
-<div class="question">
-<b>5. 날짜와 시간을 저장하는 객체는?</b><br>
-<input type="radio" name="q5" value="1"> Date<br>
-<input type="radio" name="q5" value="0"> Time<br>
-<input type="radio" name="q5" value="0"> Clock<br>
-</div>
-
-<div class="question">
-<b>6. id로 요소를 선택하는 메서드는?</b><br>
-<input type="radio" name="q6" value="1"> getElementById()<br>
-<input type="radio" name="q6" value="0"> getElementsByClassName()<br>
-<input type="radio" name="q6" value="0"> getElementsByTagName()<br>
-</div>
-
-<div class="question">
-<b>7. 클래스로 요소를 선택하는 메서드는?</b><br>
-<input type="radio" name="q7" value="1"> getElementsByClassName()<br>
-<input type="radio" name="q7" value="0"> getElementById()<br>
-<input type="radio" name="q7" value="0"> getTagName()<br>
-</div>
-
-<div class="question">
-<b>8. 이벤트를 등록하는 메서드는?</b><br>
-<input type="radio" name="q8" value="1"> addEventListener()<br>
-<input type="radio" name="q8" value="0"> addClick()<br>
-<input type="radio" name="q8" value="0"> addButton()<br>
-</div>
-
-<div class="question">
-<b>9. OX : Math.random()은 난수를 생성한다.</b><br>
-<input type="radio" name="q9" value="1"> O<br>
-<input type="radio" name="q9" value="0"> X<br>
-</div>
-
-<div class="question">
-<b>10. OX : Date 객체는 현재 시간을 가져올 수 없다.</b><br>
-<input type="radio" name="q10" value="0"> O<br>
-<input type="radio" name="q10" value="1"> X<br>
-</div>
-
-<button onclick="checkQuiz()">채점하기</button>
-
-<div id="result"></div>
-
-</div>
-
 </body>
 </html>
